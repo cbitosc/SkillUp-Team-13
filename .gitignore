@@ -19,3 +19,5 @@ release/
 loacl.properties
 
 proguard/
+
+**.DS_Store
