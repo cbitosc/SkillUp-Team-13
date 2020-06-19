@@ -7,7 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-public class Editprofile_Activity extends AppCompatActivity {
+public class Editprofile_Activity extends AppCompatActivity implements View.OnClickListener {
     Button btn_save;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -15,7 +15,7 @@ public class Editprofile_Activity extends AppCompatActivity {
         setContentView(R.layout.activity_editprofile_);
 
         btn_save=(Button) findViewById(R.id.btn_edit);
-        btn_save.setOnClickListener((View.OnClickListener) this);
+        btn_save.setOnClickListener(this);
     }
 
     public void onClick(View v) {

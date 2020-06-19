@@ -72,7 +72,9 @@ public class RegisterActivity extends AppCompatActivity {
         if (isEmail(email) == false) {
             email.setError("Enter valid email!");
         }
-        validatePassword();
+        if(validatePassword()==true){
+            gotodashboardfn();
+        }
 
     }
 
@@ -168,5 +170,9 @@ public class RegisterActivity extends AppCompatActivity {
             }
         });
 
+    }
+    public void gotodashboardfn(){
+        Intent intent=new Intent(RegisterActivity.this,DashboardActivity.class);
+        startActivity(intent);
     }
 }

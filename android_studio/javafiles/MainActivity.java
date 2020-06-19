@@ -11,7 +11,7 @@ import android.widget.TextView;
 import android.os.Bundle;
 import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener{
     EditText Roll_No,password;
     TextView textView;
     Button btn_login;
@@ -28,6 +28,9 @@ public class MainActivity extends AppCompatActivity {
         if (isEmpty(password)) {
             password.setError("Password is required!");
         }
+        else {
+            opendashboardfn();
+        }
     }
 
 
@@ -40,38 +43,33 @@ public class MainActivity extends AppCompatActivity {
         password = (EditText) findViewById(R.id.password);
         btn_login = (Button) findViewById(R.id.btn_login);
         textView = (TextView) findViewById(R.id.textView);
+        btn_login.setOnClickListener(this);
+        textView.setOnClickListener(this);
+    }
+    public void onClick(View v) {
+        btn_login.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
+                checkDataEntered();
+                //opendashboardfn();
+
+            }
+        });
         textView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 Intent i = new Intent(MainActivity.this,
                         RegisterActivity.class);
                 startActivity(i);
+
             }
         });
-        btn_login.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(MainActivity.this,
-                        DashboardActivity.class);
-                startActivity(i);
-            }
-        });
-
-        btn_login.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                checkDataEntered();
-                    }
-                //String branch = Branch.getText().toString();
-                //String Password = password.getText().toString();
-                //String RollNo=Roll_No.getText().toString();
-                //int x=0;
-                //if (!"".equals(RollNo)){
-                //   x=Integer.parseInt(RollNo);
-                //}
-
-        });
-
     }
+    public void opendashboardfn(){
+        Intent intent = new Intent(this, DashboardActivity.class);
+        startActivity(intent);
+    }
+
 }

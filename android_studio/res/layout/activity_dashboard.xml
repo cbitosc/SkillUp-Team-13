@@ -114,7 +114,7 @@
         app:layout_constraintVertical_bias="0.858" />
 
     <Button
-        android:id="@+id/editprofilebtn"
+        android:id="@+id/signout"
         android:layout_width="144dp"
         android:layout_height="42dp"
         android:background="#F1F187"
