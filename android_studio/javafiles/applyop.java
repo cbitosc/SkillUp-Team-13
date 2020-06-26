@@ -16,6 +16,9 @@ import android.widget.ImageView;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
+import static com.example.firstapp.MainActivity.Key_at;
+import static com.example.firstapp.MainActivity.Key_roll;
+
 public class applyop extends AppCompatActivity {
     int SELECT_PHOTO=1;
     Uri uri;
@@ -29,6 +32,10 @@ public class applyop extends AppCompatActivity {
         choose= (Button) findViewById(R.id.upload);
         imageView=(ImageView) findViewById(R.id.image_view);
         aply=(Button) findViewById(R.id.applybutton);
+
+        Intent intent=getIntent();
+        String srollno= intent.getStringExtra(Key_roll);
+        String access_token= intent.getStringExtra(Key_at);
 
         choose.setOnClickListener(new View.OnClickListener() {
             @Override

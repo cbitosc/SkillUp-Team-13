@@ -2,7 +2,9 @@ package com.example.firstapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
@@ -36,8 +38,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     JsonObjectRequest objectRequest;
     static final String Key_roll="srollno";
     static final String Key_Password="spassword";
+    static final String Key_name="sname";
+    static final String Key_at="access_token";
     private String srollno;
     private String spassword;
+    private String sname;
+    private String access_token;
     JSONObject data;
     boolean isEmpty
             (EditText text) {
@@ -116,7 +122,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                         try {
                             Toast toast =
-                                    Toast.makeText(getApplicationContext(),response.getString("access_token"),Toast.LENGTH_LONG);
+                                    Toast.makeText(getApplicationContext(),response.getString("sname"),Toast.LENGTH_LONG);
+                            sname = response.getString("sname");
+                            access_token = response.getString("access_token");
                             toast.show();
                             opendashboardfn();
                         } catch (JSONException e) {
@@ -129,8 +137,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                     public void onErrorResponse(VolleyError error) {
 
-                        Toast toast =
-                                Toast.makeText(getApplicationContext(),error.toString(),Toast.LENGTH_LONG);
+                        Toast toast = Toast.makeText(getApplicationContext(), "Invalid Credentials!", Toast.LENGTH_LONG);
                         toast.show();
                     }
                 })
@@ -153,6 +160,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
     public void opendashboardfn(){
         Intent intent = new Intent(this, DashboardActivity.class);
+        intent.putExtra(Key_roll,srollno);
+        intent.putExtra(Key_name,sname);
+        intent.putExtra(Key_at,access_token);
         startActivity(intent);
     }
 
