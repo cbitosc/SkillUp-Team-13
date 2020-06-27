@@ -8,7 +8,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import static com.example.firstapp.MainActivity.Key_at;
+import static com.example.firstapp.MainActivity.Key_roll;
+import static com.example.firstapp.MainActivity.Key_name;
 
 
 public class DashboardActivity extends AppCompatActivity implements View.OnClickListener{
@@ -18,7 +22,7 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
     Button btnD;
     TextView txtV;
     TextView passlefttxt;
-    TextView num;
+    TextView num , textView9;
     ImageView imgV;
     Button signout;
 
@@ -32,6 +36,7 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
         btnD = (Button) findViewById(R.id.viewstatusbtn);
         signout=(Button) findViewById(R.id.signout);
         txtV = (TextView) findViewById(R.id.dashboardtext);
+        textView9 = (TextView) findViewById(R.id.textView9);
         passlefttxt = (TextView) findViewById(R.id.passeslefttxt);
         num = (TextView) findViewById(R.id.numbern);
         imgV = (ImageView) findViewById(R.id.logoimage);
@@ -40,6 +45,12 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
         btnC.setOnClickListener(this);
         btnD.setOnClickListener( this);
         signout.setOnClickListener(this);
+        Intent intent=getIntent();
+        String srollno= intent.getStringExtra(Key_roll);
+        String access_token= intent.getStringExtra(Key_at);
+        String sname= intent.getStringExtra(Key_name);
+
+        textView9.setText("Welcome, "+ sname);
 
     }
     @Override
@@ -51,6 +62,10 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
                     String leftpasses=num.getText().toString();
                     if(!leftpasses.equals("0")) {
                         openapplyopfn();
+                    }
+                    else{
+                        Toast t = Toast.makeText(DashboardActivity.this , "You don't have any GatePass Left", Toast.LENGTH_SHORT);
+                        t.show();
                     }
                 }
             });
@@ -71,7 +86,15 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
             btnD.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    openviewstatusfn();
+                    String leftpasses=num.getText().toString();
+                    if(!leftpasses.equals("0")) {
+                        openviewstatusfn();
+                    }
+                    else{
+                        Toast t = Toast.makeText(DashboardActivity.this , "You don't have any GatePass Left", Toast.LENGTH_SHORT);
+                        t.show();
+                    }
+                    //openviewstatusfn();
                 }
             });
             signout.setOnClickListener(new View.OnClickListener() {
