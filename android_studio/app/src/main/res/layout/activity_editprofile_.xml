@@ -125,10 +125,12 @@
         android:textColorHighlight="#0B0A0A"
         android:textColorHint="#fcfcf7"
         android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.504"
+        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/number" />
+        app:layout_constraintTop_toBottomOf="@+id/number"
+        app:layout_constraintVertical_bias="0.002" />
 
     <EditText
         android:id="@+id/password1"
@@ -137,19 +139,19 @@
         android:layout_marginTop="12dp"
         android:backgroundTint="#97968F"
         android:ems="10"
+        android:fontFamily="sans-serif-smallcaps"
         android:hint="Password"
         android:inputType="textPassword"
         android:textColor="#F6EEEE"
         android:textColorHighlight="#0B0A0A"
         android:textColorHint="#fcfcf7"
-        android:fontFamily="sans-serif-smallcaps"
         android:textSize="16sp"
         app:layout_constraintBottom_toTopOf="@+id/password2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/phone"
-        app:layout_constraintVertical_bias="0.876" />
+        app:layout_constraintVertical_bias="0.928" />
 
     <EditText
         android:id="@+id/password2"
@@ -157,19 +159,19 @@
         android:layout_height="wrap_content"
         android:backgroundTint="#97968F"
         android:ems="10"
+        android:fontFamily="sans-serif-smallcaps"
         android:hint="Confirm Password"
         android:inputType="textPassword"
         android:textColor="#F6EEEE"
         android:textColorHighlight="#0B0A0A"
         android:textColorHint="#fcfcf7"
         android:textSize="16sp"
-        android:fontFamily="sans-serif-smallcaps"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintHorizontal_bias="0.504"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/phone"
-        app:layout_constraintVertical_bias="0.604" />
+        app:layout_constraintTop_toTopOf="@+id/phone"
+        app:layout_constraintVertical_bias="0.566" />
 
     <Button
         android:id="@+id/btn_edit"

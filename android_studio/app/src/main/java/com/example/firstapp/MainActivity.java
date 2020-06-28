@@ -14,6 +14,7 @@ import android.widget.TextView;
 import android.os.Bundle;
 import android.widget.Toast;
 
+import android.os.AsyncTask;
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -21,8 +22,6 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -65,6 +64,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
+    public SharedPreferences.Editor loginPrefsEditor;
+    public  SharedPreferences loginPreferences;
+    private Boolean saveLogin;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,6 +80,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         textView = (TextView) findViewById(R.id.textView);
         btn_login.setOnClickListener(this);
         textView.setOnClickListener(this);
+        loginPreferences = getSharedPreferences("loginPrefs", MODE_PRIVATE);
+        loginPrefsEditor = loginPreferences.edit();
+
+        saveLogin = loginPreferences.getBoolean("saveLogin", false);
+        if (saveLogin == true) {
+            Roll_No.setText(loginPreferences.getString("userroll", ""));
+            password.setText(loginPreferences.getString("password", ""));
+        }
     }
     public void onClick(View v) {
         btn_login.setOnClickListener(new View.OnClickListener() {
@@ -85,6 +96,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                 checkDataEntered();
                 //opendashboardfn();
+                loginPrefsEditor.putBoolean("saveLogin", true);
+                loginPrefsEditor.putString("userroll", srollno);
+                loginPrefsEditor.putString("password", spassword);
+                loginPrefsEditor.commit();
+                //new myAsyncTask().execute();
 
             }
         });
@@ -121,8 +137,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     public void onResponse(JSONObject response) {
 
                         try {
-                            Toast toast =
-                                    Toast.makeText(getApplicationContext(),response.getString("sname"),Toast.LENGTH_LONG);
+                            Toast toast = Toast.makeText(getApplicationContext(), "Welcome!", Toast.LENGTH_LONG);
+                            toast.show();
                             sname = response.getString("sname");
                             access_token = response.getString("access_token");
                             toast.show();

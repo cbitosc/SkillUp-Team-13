@@ -2,13 +2,31 @@ package com.example.firstapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.HashMap;
+import java.util.Map;
 
 import static com.example.firstapp.MainActivity.Key_at;
 import static com.example.firstapp.MainActivity.Key_roll;
@@ -21,8 +39,7 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
     Button btnC;
     Button btnD;
     TextView txtV;
-    TextView passlefttxt;
-    TextView num , textView9;
+    TextView passlefttxt,  textView9 , num;
     ImageView imgV;
     Button signout;
 
@@ -47,12 +64,47 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
         signout.setOnClickListener(this);
         Intent intent=getIntent();
         String srollno= intent.getStringExtra(Key_roll);
-        String access_token= intent.getStringExtra(Key_at);
+        final String access_token= intent.getStringExtra(Key_at);
         String sname= intent.getStringExtra(Key_name);
 
         textView9.setText("Welcome, "+ sname);
 
+        RequestQueue queue = Volley.newRequestQueue(this);
+        String url ="https://outpassapp.herokuapp.com/getpendingnoofpassesleft"+"?srollno="+srollno;
+
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        num.setText(""+ response.substring(15,16));
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        num.setText("");
+                        Toast toast = Toast.makeText(getApplicationContext(), "Invalid!", Toast.LENGTH_LONG);
+                        toast.show();
+                    }
+                })
+        {
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                Map<String, String> headers = new HashMap<>();
+                // Basic Authentication
+                //String auth = "Basic " + Base64.encodeToString(CONSUMER_KEY_AND_SECRET.getBytes(), Base64.NO_WRAP);
+
+                headers.put("Authorization", "Bearer " + access_token);
+                return headers;
+            }
+        };
+
+// Add the request to the RequestQueue.
+        queue.add(stringRequest);
+
+
     }
+
     @Override
     public void onClick(View v) {
 
@@ -124,6 +176,10 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
         startActivity(intent);
     }
     public void openloginpagefn(){
+        SharedPreferences preferences =getSharedPreferences("loginPrefs", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.clear();
+        editor.commit();
         Intent intent=new Intent(this,MainActivity.class);
         startActivity(intent);
     }
