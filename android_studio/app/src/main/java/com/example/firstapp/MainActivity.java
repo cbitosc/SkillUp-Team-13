@@ -39,10 +39,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     static final String Key_Password="spassword";
     static final String Key_name="sname";
     static final String Key_at="access_token";
-    private String srollno;
-    private String spassword;
-    private String sname;
-    private String access_token;
+    static public String srollno;
+    static public String spassword;
+    static public String sname;
+    static public String access_token;
     JSONObject data;
     boolean isEmpty
             (EditText text) {
@@ -176,9 +176,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
     public void opendashboardfn(){
         Intent intent = new Intent(this, DashboardActivity.class);
-        intent.putExtra(Key_roll,srollno);
-        intent.putExtra(Key_name,sname);
-        intent.putExtra(Key_at,access_token);
         startActivity(intent);
     }
 

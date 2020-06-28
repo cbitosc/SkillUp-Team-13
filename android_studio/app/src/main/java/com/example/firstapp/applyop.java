@@ -123,9 +123,7 @@ public class applyop extends AppCompatActivity {
         otime=time.getText().toString().trim();
         odesc=reason.getText().toString().trim();
         Intent intent=getIntent();
-        final String srollno= intent.getStringExtra(Key_roll);
-        final String access_token= intent.getStringExtra(Key_at);
-        String URL = "https://outpassapp.herokuapp.com/outpassapplication"+"?srollno="+srollno;
+        String URL = "https://outpassapp.herokuapp.com/outpassapplication"+"?srollno="+MainActivity.srollno;
         data = new JSONObject();
         try{
             data.put(Key_time,otime);
@@ -176,7 +174,7 @@ public class applyop extends AppCompatActivity {
                 // Basic Authentication
                 //String auth = "Basic " + Base64.encodeToString(CONSUMER_KEY_AND_SECRET.getBytes(), Base64.NO_WRAP);
 
-                headers.put("Authorization", "Bearer " + access_token);
+                headers.put("Authorization", "Bearer " + MainActivity.access_token);
                 return headers;
             }
         };
