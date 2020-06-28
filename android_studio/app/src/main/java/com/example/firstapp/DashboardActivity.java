@@ -62,15 +62,12 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
         btnC.setOnClickListener(this);
         btnD.setOnClickListener( this);
         signout.setOnClickListener(this);
-        Intent intent=getIntent();
-        String srollno= intent.getStringExtra(Key_roll);
-        final String access_token= intent.getStringExtra(Key_at);
-        String sname= intent.getStringExtra(Key_name);
+        String sname= MainActivity.sname;
 
         textView9.setText("Welcome, "+ sname);
 
         RequestQueue queue = Volley.newRequestQueue(this);
-        String url ="https://outpassapp.herokuapp.com/getpendingnoofpassesleft"+"?srollno="+srollno;
+        String url ="https://outpassapp.herokuapp.com/getpendingnoofpassesleft"+"?srollno="+MainActivity.srollno;
 
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
                 new Response.Listener<String>() {
@@ -94,7 +91,7 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
                 // Basic Authentication
                 //String auth = "Basic " + Base64.encodeToString(CONSUMER_KEY_AND_SECRET.getBytes(), Base64.NO_WRAP);
 
-                headers.put("Authorization", "Bearer " + access_token);
+                headers.put("Authorization", "Bearer " + MainActivity.access_token);
                 return headers;
             }
         };
