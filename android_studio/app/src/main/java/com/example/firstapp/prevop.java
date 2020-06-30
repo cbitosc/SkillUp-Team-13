@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Html;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -56,10 +57,16 @@ public class prevop extends AppCompatActivity {
                                 String oodesc = jsonObject.getString("odesc");
 
 
-                                ostatus+= oodate+" "+ oodesc+ " " + oostatus+ "\n";
+                                ostatus+= (i+1)+")"+ "<b>" + "Date: " + "</b> "+ oodate+"<br>" + "<b>"
+                                        +"Reason: "+ "</b> "+ oodesc+"<br>" +"<b>"+" Status: "+"</b>" + oostatus+ "<br> <br>";
+                                ostatus = ostatus.replace("come to cabin", "<font color='#f2f53b'>come to cabin</font>");
+                                ostatus = ostatus.replace("rejected", "<font color='#cc331f'>rejected</font>");
+                                ostatus = ostatus.replace("accepted", "<font color='#30b021'>accepted</font>");
+                                ostatus = ostatus.replace("pending", "<font color='#8a8a7f'>pending</font>");
+
 
                             }
-                            text.setText(ostatus);
+                            text.setText(Html.fromHtml(ostatus));
 
                         }
                         catch (JSONException e){

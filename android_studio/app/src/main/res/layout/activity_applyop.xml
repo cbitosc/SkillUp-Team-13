@@ -7,22 +7,61 @@
     android:background="@drawable/bg1"
     tools:context=".applyop">
 
+
+    <!--    <EditText-->
+<!--        android:id="@+id/time"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginStart="54dp"-->
+<!--        android:layout_marginTop="72dp"-->
+<!--        android:layout_marginEnd="159dp"-->
+<!--        android:backgroundTint="#ffffff"-->
+<!--        android:ems="10"-->
+<!--        android:fontFamily="sans-serif-smallcaps"-->
+<!--        android:hint="Time"-->
+<!--        android:inputType="textPersonName"-->
+<!--        android:textColor="#ffffff"-->
+<!--        android:textColorHint="#ffffff"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintHorizontal_bias="1.0"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent" />-->
+
+    <!--    <CheckBox-->
+<!--        android:id="@+id/checkbox"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginStart="67dp"-->
+<!--        android:layout_marginTop="8dp"-->
+<!--        android:layout_marginEnd="250dp"-->
+<!--        android:fontFamily="sans-serif-smallcaps"-->
+<!--        android:text="Parent/Guardian"-->
+
+<!--        android:textColor="#ffffff"-->
+<!--        android:textSize="16sp"-->
+<!--        app:layout_constraintBottom_toTopOf="@+id/upload"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintHorizontal_bias="1.0"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/reason"-->
+<!--        app:layout_constraintVertical_bias="0.056" />-->
+
     <TextView
         android:id="@+id/applyforoutpass"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="4dp"
+        android:fontFamily="sans-serif-smallcaps"
         android:text="apply for outpass"
         android:textColor="#FEFFFF"
-        android:textSize="36sp"
         android:textColorHighlight="#FFFFFF"
         android:textColorHint="#FFFFFF"
-        android:textStyle="bold|italic"
-        android:fontFamily="sans-serif-smallcaps"
+        android:textSize="36sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
 
     <TextView
         android:id="@+id/date"
@@ -39,100 +78,58 @@
         android:textSize="19sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.075"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.376" />
-
-    <EditText
-        android:id="@+id/time"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="54dp"
-        android:layout_marginTop="72dp"
-        android:layout_marginEnd="159dp"
-        android:backgroundTint="#ffffff"
-        android:ems="10"
-        android:fontFamily="sans-serif-smallcaps"
-        android:hint="Time"
-        android:inputType="textPersonName"
-        android:textColor="#ffffff"
-        android:textColorHint="#ffffff"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintVertical_bias="0.277" />
 
     <EditText
         android:id="@+id/reason"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="54dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="159dp"
         android:backgroundTint="#ffffff"
-        android:ems="10"
+        android:ems="12"
         android:fontFamily="sans-serif-smallcaps"
         android:hint="Reason"
         android:inputType="textPersonName"
         android:textColor="#ffffff"
         android:textColorHint="#ffffff"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.41"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/time" />
-
-    <CheckBox
-        android:id="@+id/checkbox"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="67dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="250dp"
-        android:fontFamily="sans-serif-smallcaps"
-        android:text="Parent/Guardian"
-
-        android:textColor="#ffffff"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toTopOf="@+id/upload"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/reason"
-        app:layout_constraintVertical_bias="0.056" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.607" />
 
     <Button
         android:id="@+id/applybutton"
-        android:layout_width="wrap_content"
+        android:layout_width="140dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="181dp"
-        android:layout_marginBottom="12dp"
-        android:background="#F1F187"
-        android:text="APPLY"
-        android:textSize="24sp"
-        android:textColor="#070707"
+        android:background="@drawable/round"
         android:fontFamily="sans-serif-smallcaps"
+        android:text="Apply"
+        android:textColor="#070707"
+        android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.529"
+        app:layout_constraintHorizontal_bias="0.873"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/checkbox"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.723" />
 
     <LinearLayout
         android:id="@+id/linearLayout"
-        android:layout_width="409dp"
+        android:layout_width="209dp"
         android:layout_height="150dp"
         android:layout_marginStart="1dp"
-        android:layout_marginTop="112dp"
         android:layout_marginEnd="1dp"
         android:orientation="vertical"
-        app:layout_constraintBottom_toTopOf="@+id/applybutton"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.106"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/checkbox"
-        app:layout_constraintVertical_bias="0.828">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.955">
 
         <ImageView
             android:id="@+id/image_view"
@@ -147,8 +144,8 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="17dp"
         android:layout_marginTop="22dp"
-        android:background="#F1F187"
-        android:fontFamily="@font/boogaloo"
+        android:background="@drawable/round"
+        android:fontFamily="sans-serif"
         android:text="Upload image here"
         android:textColor="#070707"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -156,19 +153,52 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.617" />
+        app:layout_constraintVertical_bias="0.715" />
 
-    <CalendarView
-        android:id="@+id/calendarView2"
-        android:layout_width="244dp"
-        android:layout_height="300dp"
-        android:theme="@style/CalenderViewCustom"
+    <DatePicker
+        android:id="@+id/datePicker1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:calendarViewShown="false"
+        android:datePickerMode="spinner"
         android:dateTextAppearance="@style/CalenderViewDateCustomText"
+        android:theme="@style/CalenderViewCustom"
         android:weekDayTextAppearance="@style/CalenderViewWeekCustomText"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.994"
+        app:layout_constraintHorizontal_bias="0.432"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.412" />
+        app:layout_constraintVertical_bias="0.409" />
+
+    <TimePicker
+        android:id="@+id/timePicker1"
+        android:layout_width="wrap_content"
+        android:layout_height="130dp"
+        android:dateTextAppearance="@style/CalenderViewDateCustomText"
+        android:theme="@style/CalenderViewCustom"
+        android:timePickerMode="spinner"
+        android:weekDayTextAppearance="@style/CalenderViewWeekCustomText"
+        app:layout_constraintBottom_toBottomOf="@+id/applybutton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.45"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.162" />
+
+    <TextView
+        android:id="@+id/textView12"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif-smallcaps"
+        android:text="Select Time"
+        android:textColor="#EFE6E6"
+        android:textSize="19sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.212"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.083" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

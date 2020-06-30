@@ -4,6 +4,7 @@ import androidx.annotation.ColorInt;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
@@ -14,9 +15,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CalendarView;
 import android.widget.CheckBox;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.TimePicker;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -63,6 +66,8 @@ public class applyop extends AppCompatActivity {
     private Calendar calendar;
     private String odate;
     public static String oid;
+    DatePicker picker;
+    private TimePicker timePicker1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,6 +81,8 @@ public class applyop extends AppCompatActivity {
         date = (TextView) findViewById(R.id.date);
         //CheckBox checkbox = (CheckBox) findViewById(checkbox);
         //calendar=(CalendarView) findViewById(R.id.calendarView2);
+        picker=(DatePicker)findViewById(R.id.datePicker1);
+        timePicker1 = (TimePicker) findViewById(R.id.timePicker1);
 
 
 
@@ -111,15 +118,20 @@ public class applyop extends AppCompatActivity {
         }
     }
     public void apply() {
-        calendar = Calendar.getInstance();
-        //dateFormat=new SimpleDateFormat("YYYY-MM-DD");
-        //odate=dateFormat.format(calendar);
-        //Log.e("TAG",odate.toString());
-        int year = calendar.get(Calendar.YEAR);
-        int month = calendar.get(Calendar.MONTH);
-        int day = calendar.get(Calendar.DAY_OF_MONTH);
+        int day= picker.getDayOfMonth();
+        int month= picker.getMonth();
+        int year= picker.getYear();
         odate= year+":"+month+":"+day;
-        otime=time.getText().toString().trim();
+        Log.e("TAG", odate);
+
+        timePicker1.setIs24HourView(true);
+
+        int hour = timePicker1.getHour();
+        int min = timePicker1.getMinute();
+
+        otime=hour+":"+min+":00";
+        Log.e("TAG", otime);
+        //otime=time.getText().toString().trim();
         odesc=reason.getText().toString().trim();
         String URL = "https://outpassapp.herokuapp.com/outpassapplication"+"?srollno="+MainActivity.srollno;
         data = new JSONObject();

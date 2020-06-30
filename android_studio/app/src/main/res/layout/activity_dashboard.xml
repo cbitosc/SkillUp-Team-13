@@ -11,7 +11,7 @@
         android:id="@+id/previousoutpassesbtn"
         android:layout_width="265dp"
         android:layout_height="63dp"
-        android:background="#F1F187"
+        android:background="@drawable/round"
         android:fontFamily="sans-serif-smallcaps"
         android:text="Previous outpasses"
         android:textColor="#070707"
@@ -19,17 +19,18 @@
 
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.476"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.543" />
+        app:layout_constraintVertical_bias="0.542" />
 
     <Button
         android:id="@+id/applyforoutpassesbtn"
         android:layout_width="265dp"
         android:layout_height="63dp"
-        android:background="#F1F187"
         android:fontFamily="sans-serif-smallcaps"
         android:text="Apply for outpass"
+        android:background="@drawable/round"
         android:textColor="#070707"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -43,7 +44,7 @@
         android:id="@+id/viewstatusbtn"
         android:layout_width="265dp"
         android:layout_height="63dp"
-        android:background="#F1F187"
+        android:background="@drawable/round"
         android:fontFamily="sans-serif-smallcaps"
         android:text="application status"
         android:textColor="#070707"
@@ -68,10 +69,9 @@
         android:textStyle="bold|italic"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.561"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.116" />
+        app:layout_constraintVertical_bias="0.137" />
 
     <ImageView
         android:id="@+id/logoimage"
@@ -104,7 +104,7 @@
         android:id="@+id/editprofilebtn"
         android:layout_width="144dp"
         android:layout_height="42dp"
-        android:background="#F1F187"
+        android:background="@drawable/round"
         android:fontFamily="sans-serif-smallcaps"
         android:text="Edit profile"
         android:textSize="24sp"
@@ -119,7 +119,7 @@
         android:id="@+id/signout"
         android:layout_width="144dp"
         android:layout_height="42dp"
-        android:background="#F1F187"
+        android:background="@drawable/round"
         android:fontFamily="sans-serif-smallcaps"
         android:text="sign out"
         android:textSize="24sp"
@@ -189,8 +189,8 @@
         android:textStyle="italic"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.156"
+        app:layout_constraintHorizontal_bias="0.73"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.98" />
+        app:layout_constraintVertical_bias="0.977" />
 </androidx.constraintlayout.widget.ConstraintLayout>
