@@ -20,6 +20,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
+import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -60,9 +61,8 @@ public class applyop extends AppCompatActivity {
     //Calendar calendar;
     //CalendarView calendar;
     private Calendar calendar;
-    private SimpleDateFormat dateFormat;
     private String odate;
-    private String oid;
+    public static String oid;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,7 +76,6 @@ public class applyop extends AppCompatActivity {
         date = (TextView) findViewById(R.id.date);
         //CheckBox checkbox = (CheckBox) findViewById(checkbox);
         //calendar=(CalendarView) findViewById(R.id.calendarView2);
-
 
 
 
@@ -111,7 +110,7 @@ public class applyop extends AppCompatActivity {
             }
         }
     }
-    private void apply() {
+    public void apply() {
         calendar = Calendar.getInstance();
         //dateFormat=new SimpleDateFormat("YYYY-MM-DD");
         //odate=dateFormat.format(calendar);
@@ -122,7 +121,6 @@ public class applyop extends AppCompatActivity {
         odate= year+":"+month+":"+day;
         otime=time.getText().toString().trim();
         odesc=reason.getText().toString().trim();
-        Intent intent=getIntent();
         String URL = "https://outpassapp.herokuapp.com/outpassapplication"+"?srollno="+MainActivity.srollno;
         data = new JSONObject();
         try{
@@ -178,13 +176,17 @@ public class applyop extends AppCompatActivity {
                 return headers;
             }
         };
+        objectRequest.setRetryPolicy(new DefaultRetryPolicy(
+                0,
+                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT
+        ));
 
         queue.add(objectRequest);
 
     }
     public void gotodashboardfn(){
         Intent intent=new Intent(this,DashboardActivity.class);
-        intent.putExtra(Key_oid,oid);
         startActivity(intent);
     }
 

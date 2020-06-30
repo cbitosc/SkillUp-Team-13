@@ -62,9 +62,8 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
         btnC.setOnClickListener(this);
         btnD.setOnClickListener( this);
         signout.setOnClickListener(this);
-        String sname= MainActivity.sname;
 
-        textView9.setText("Welcome, "+ sname);
+        textView9.setText("Welcome, "+ MainActivity.sname);
 
         RequestQueue queue = Volley.newRequestQueue(this);
         String url ="https://outpassapp.herokuapp.com/getpendingnoofpassesleft"+"?srollno="+MainActivity.srollno;

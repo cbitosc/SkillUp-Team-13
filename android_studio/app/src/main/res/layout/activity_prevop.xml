@@ -25,6 +25,12 @@
     <TableRow
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="#DAE8FC"
+        android:padding="5dp"/>
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:background="#0079D6"
         android:padding="5dp">
 
@@ -57,79 +63,19 @@
             android:textSize="24sp" />
     </TableRow>
 
-    <TableRow android:background="#DAE8FC" android:padding="5dp">
-        <TextView
-
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:fontFamily="sans-serif-smallcaps"
-            android:text="10/5/2020"
-            />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="  reason1" />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="approved" />
-    </TableRow>
-
     <TableRow
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:background="#DAE8FC"
-        android:padding="5dp">
+        android:padding="5dp" />
 
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="15/6/2020"
-            android:fontFamily="sans-serif-smallcaps"
-            />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="  reason2" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="denied" />
-    </TableRow>
-
-    <TableRow
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="#DAE8FC"
-        android:padding="5dp">
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="17/6/2020"
-            android:fontFamily="sans-serif-smallcaps"
-            />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="  reason3" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="approved" />
-    </TableRow>
-
+    <TextView
+        android:id="@+id/tv"
+        android:layout_width="wrap_content"
+        android:layout_height="602dp"
+        android:fontFamily="sans-serif-smallcaps"
+        android:text="Outpass History Will be Displayed Here"
+        android:textAlignment="center"
+        android:textColor="#FEFFFF"
+        android:textSize="25sp" />
 </TableLayout>

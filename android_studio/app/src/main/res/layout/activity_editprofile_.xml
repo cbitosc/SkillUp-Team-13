@@ -71,11 +71,10 @@
             android:textSize="14sp" />
     </RadioGroup>
 
-    <EditText
+    <TextView
         android:id="@+id/number"
         android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_height="30dp"
         android:backgroundTint="#97968F"
         android:ems="10"
         android:fontFamily="sans-serif-smallcaps"
@@ -84,11 +83,13 @@
         android:textColor="#F6EEEE"
         android:textColorHighlight="#0B0A0A"
         android:textColorHint="#fcfcf7"
-        android:textSize="16sp"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintHorizontal_bias="0.504"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/radioGroup2" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.338" />
 
     <EditText
         android:id="@+id/email"
@@ -133,14 +134,14 @@
         app:layout_constraintVertical_bias="0.002" />
 
     <EditText
-        android:id="@+id/password1"
+        android:id="@+id/passwordo"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="116dp"
         android:backgroundTint="#97968F"
         android:ems="10"
-        android:fontFamily="sans-serif-smallcaps"
-        android:hint="Password"
+        android:fontFamily="sans-serif"
+        android:hint="Old Password"
         android:inputType="textPassword"
         android:textColor="#F6EEEE"
         android:textColorHighlight="#0B0A0A"
@@ -154,13 +155,13 @@
         app:layout_constraintVertical_bias="0.928" />
 
     <EditText
-        android:id="@+id/password2"
+        android:id="@+id/passwordn"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:backgroundTint="#97968F"
         android:ems="10"
-        android:fontFamily="sans-serif-smallcaps"
-        android:hint="Confirm Password"
+        android:fontFamily="sans-serif"
+        android:hint="New Password"
         android:inputType="textPassword"
         android:textColor="#F6EEEE"
         android:textColorHighlight="#0B0A0A"
@@ -168,10 +169,10 @@
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.504"
+        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/phone"
-        app:layout_constraintVertical_bias="0.566" />
+        app:layout_constraintVertical_bias="0.588" />
 
     <Button
         android:id="@+id/btn_edit"
@@ -204,7 +205,7 @@
         android:textColorHighlight="#0B0A0A"
         android:textColorHint="#fcfcf7"
         android:textSize="16dp"
-        app:layout_constraintBottom_toTopOf="@+id/phone2"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
@@ -215,7 +216,7 @@
         android:id="@+id/phone2"
         android:layout_width="300dp"
         android:layout_height="40dp"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="64dp"
         android:backgroundTint="#97968F"
         android:ems="10"
         android:fontFamily="sans-serif-smallcaps"
