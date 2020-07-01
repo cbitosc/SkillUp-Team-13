@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
+<TableLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -7,12 +7,9 @@
     android:layout_height="match_parent"
     tools:context=".prevop"
     android:background="@drawable/bg1">
-    <TableLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:stretchColumns="1">
 
-    <TableRow android:background="#FEFFFF" android:padding="5dp">
+    <TableRow android:background="#FEFFFF"
+        android:padding="5dp">
 
         <TextView
             android:layout_width="wrap_content"
@@ -82,14 +79,18 @@
 <!--        android:background="#727477"-->
 <!--        android:padding="5dp" />-->
 
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
     <TextView
         android:id="@+id/tv"
         android:layout_width="wrap_content"
-        android:layout_height="602dp"
+        android:layout_height="wrap_content"
         android:fontFamily="sans-serif-smallcaps"
-        android:text="Outpass History Will be Displayed Here"
+        android:text="Outpass History Will be Displayed Here "
         android:textAlignment="inherit"
         android:textColor="#FEFFFF"
         android:textSize="25sp" />
-    </TableLayout>
-</ScrollView>
+    </ScrollView>
+
+</TableLayout>
