@@ -12,18 +12,21 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.HashMap;
 import java.util.Map;
 
-import static com.example.firstapp.MainActivity.Key_at;
-import static com.example.firstapp.MainActivity.Key_roll;
-//import static com.example.firstapp.applyop.Key_oid;
 
 public class viewstatus extends AppCompatActivity {
     TextView status, remark;
+    String ostatus="";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,28 +36,42 @@ public class viewstatus extends AppCompatActivity {
         status = (TextView) findViewById(R.id.textView4);
         remark = (TextView) findViewById(R.id.textView5);
 
-        Intent intent=getIntent();
-        String srollno= intent.getStringExtra(Key_roll);
-        final String access_token= intent.getStringExtra(Key_at);
-        //String oid= intent.getStringExtra(Key_oid);
 
         RequestQueue queue = Volley.newRequestQueue(this);
-        //String url =""+"?oid="+oid;
-        String url ="";
+        String url ="https://outpassapp.herokuapp.com/outpassstatus"+"?oid="+applyop.oid;
+
 
 
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        //status.setText(""+ response.getString("status"));
-                        //remark.setText(""+ response.getString("remark"));
+//                        status.setText(""+response);
+                        try {
+                            JSONArray ja = new JSONArray(response);
+
+                            for(int i=0; i < ja.length(); i++) {
+
+                                JSONObject jsonObject = ja.getJSONObject(i);
+
+                                // int id = Integer.parseInt(jsonObject.optString("id").toString());
+                                String oostatus = jsonObject.getString("ostatus");
+                                //String url = jsonObject.getString("URL");
+
+                                ostatus =""+ oostatus;
+                            }
+                            status.setText(ostatus);
+
+                            }
+                        catch (JSONException e){
+                            e.printStackTrace();
+
+                        }
                     }
                 },
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        status.setText("");
                         Toast toast = Toast.makeText(getApplicationContext(), "Invalid!", Toast.LENGTH_LONG);
                         toast.show();
                     }
@@ -66,7 +83,7 @@ public class viewstatus extends AppCompatActivity {
                 // Basic Authentication
                 //String auth = "Basic " + Base64.encodeToString(CONSUMER_KEY_AND_SECRET.getBytes(), Base64.NO_WRAP);
 
-                headers.put("Authorization", "Bearer " + access_token);
+                headers.put("Authorization", "Bearer " + MainActivity.access_token);
                 return headers;
             }
         };

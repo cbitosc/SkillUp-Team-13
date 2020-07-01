@@ -4,6 +4,7 @@ import androidx.annotation.ColorInt;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
@@ -14,12 +15,15 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CalendarView;
 import android.widget.CheckBox;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.TimePicker;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
+import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -60,9 +64,10 @@ public class applyop extends AppCompatActivity {
     //Calendar calendar;
     //CalendarView calendar;
     private Calendar calendar;
-    private SimpleDateFormat dateFormat;
     private String odate;
-    private String oid;
+    public static String oid;
+    DatePicker picker;
+    private TimePicker timePicker1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,7 +81,8 @@ public class applyop extends AppCompatActivity {
         date = (TextView) findViewById(R.id.date);
         //CheckBox checkbox = (CheckBox) findViewById(checkbox);
         //calendar=(CalendarView) findViewById(R.id.calendarView2);
-
+        picker=(DatePicker)findViewById(R.id.datePicker1);
+        timePicker1 = (TimePicker) findViewById(R.id.timePicker1);
 
 
 
@@ -111,18 +117,22 @@ public class applyop extends AppCompatActivity {
             }
         }
     }
-    private void apply() {
-        calendar = Calendar.getInstance();
-        //dateFormat=new SimpleDateFormat("YYYY-MM-DD");
-        //odate=dateFormat.format(calendar);
-        //Log.e("TAG",odate.toString());
-        int year = calendar.get(Calendar.YEAR);
-        int month = calendar.get(Calendar.MONTH);
-        int day = calendar.get(Calendar.DAY_OF_MONTH);
+    public void apply() {
+        int day= picker.getDayOfMonth();
+        int month= picker.getMonth();
+        int year= picker.getYear();
         odate= year+":"+month+":"+day;
-        otime=time.getText().toString().trim();
+        Log.e("TAG", odate);
+
+        timePicker1.setIs24HourView(true);
+
+        int hour = timePicker1.getHour();
+        int min = timePicker1.getMinute();
+
+        otime=hour+":"+min+":00";
+        Log.e("TAG", otime);
+        //otime=time.getText().toString().trim();
         odesc=reason.getText().toString().trim();
-        Intent intent=getIntent();
         String URL = "https://outpassapp.herokuapp.com/outpassapplication"+"?srollno="+MainActivity.srollno;
         data = new JSONObject();
         try{
@@ -178,13 +188,17 @@ public class applyop extends AppCompatActivity {
                 return headers;
             }
         };
+        objectRequest.setRetryPolicy(new DefaultRetryPolicy(
+                0,
+                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT
+        ));
 
         queue.add(objectRequest);
 
     }
     public void gotodashboardfn(){
         Intent intent=new Intent(this,DashboardActivity.class);
-        intent.putExtra(Key_oid,oid);
         startActivity(intent);
     }
 

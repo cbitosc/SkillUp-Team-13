@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.text.Html;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -42,6 +43,7 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
     TextView passlefttxt,  textView9 , num;
     ImageView imgV;
     Button signout;
+    String left="";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,9 +64,8 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
         btnC.setOnClickListener(this);
         btnD.setOnClickListener( this);
         signout.setOnClickListener(this);
-        String sname= MainActivity.sname;
 
-        textView9.setText("Welcome, "+ sname);
+        textView9.setText("Welcome, "+ MainActivity.sname);
 
         RequestQueue queue = Volley.newRequestQueue(this);
         String url ="https://outpassapp.herokuapp.com/getpendingnoofpassesleft"+"?srollno="+MainActivity.srollno;
@@ -73,7 +74,27 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        num.setText(""+ response.substring(15,16));
+                        //num.setText(""+ response.substring(15,16));
+                        try {
+                            JSONArray ja = new JSONArray(response);
+
+                            for(int i=0; i < ja.length(); i++) {
+
+                                JSONObject jsonObject = ja.getJSONObject(i);
+
+                                // int id = Integer.parseInt(jsonObject.optString("id").toString());
+                                String oodate = jsonObject.getString("passesleft");
+
+                                left=""+oodate;
+
+                            }
+                            num.setText(left);
+
+                        }
+                        catch (JSONException e){
+                            e.printStackTrace();
+
+                        }
                     }
                 },
                 new Response.ErrorListener() {
