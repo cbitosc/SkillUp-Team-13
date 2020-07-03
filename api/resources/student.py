@@ -124,10 +124,6 @@ class EditStudentdetails(Resource):
 
 
         try:
-            if data['snewpassword'] == None:
-                data['snewpassword'] = studentuser.spassword
-            else:
-                spassword_hash = bcrypt.generate_password_hash(data['snewpassword']).decode('utf-8')
             if data['sname'] == None:
                 data['sname'] = studentuser.sname
             if data['sdept'] == None:
@@ -142,10 +138,27 @@ class EditStudentdetails(Resource):
                 data['spgname'] = studentuser.spgname
             if data['spgphone'] == None:
                 data['spgphone'] = studentuser.spgphone
-        except:
-            return {"message":"Error in editing details"},500
+            if data['snewpassword'] == None:
+                try:
+                    x=query(f"""SELECT * FROM STUDENTS WHERE srollno = '{data["srollno"]}'""",return_json=False)
+                    if len(x)>0:
+                        query(f"""UPDATE STUDENTS SET
+                                                        sname='{data['sname']}',
+                                                        sdept='{data['sdept']}',
+                                                        syear='{data['syear']}',
+                                                        semail='{data['semail']}',
+                                                        sphone='{data['sphone']}',
+                                                        spgname='{data['spgname']}',
+                                                        spgphone='{data['spgphone']}'
+                                WHERE srollno = '{data['srollno']}'""")
+                        return {"message" : "Details are edited successfully!"},200
+                    return {"message" : "Srollno doesn't exist"},400
+                except:
+                    return{"message" : "Error in editing details1"},500
+            else:
+                spassword_hash = bcrypt.generate_password_hash(data['snewpassword']).decode('utf-8')
+            
 
-        try:
             x=query(f"""SELECT * FROM STUDENTS WHERE srollno = '{data["srollno"]}'""",return_json=False)
             if len(x)>0:
                 query(f"""UPDATE STUDENTS SET
@@ -160,5 +173,37 @@ class EditStudentdetails(Resource):
                         WHERE srollno = '{data['srollno']}'""")
                 return {"message" : "Details are edited successfully!"},200
             return {"message" : "Srollno doesn't exist"},400
+
         except:
-                return{"message" : "Error in editing details"},500
+            return {"message":"Error in editing details"},500
+
+class Outpassstatus(Resource):
+    @jwt_required
+    def get(self):
+        parser = reqparse.RequestParser()
+
+        parser.add_argument('oid', type = int, required = True, help = 'oid cannot be left blank')
+
+        data = parser.parse_args()
+
+        try:
+            return query(f"""SELECT ostatus FROM PASSES WHERE oid = '{data['oid']}'""", return_json=False),200
+        except:
+            return {"message":"oid doesn't exist"},500
+
+class GetStudentHistory(Resource):
+    @jwt_required
+    def get(self):
+        try:
+            parser = reqparse.RequestParser()
+
+            parser.add_argument('srollno', type = str, required = True, help = 'roll no cannot be left blank')
+
+            data = parser.parse_args()
+        except:
+            return {"message":"error in parsing data"},400
+
+        try:
+            return query(f"""SELECT odate, odesc, ostatus FROM PASSES WHERE orollno = '{data["srollno"]}'""")
+        except:
+            return {"message":"Error while fetching data"},500
